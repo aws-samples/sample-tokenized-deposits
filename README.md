@@ -132,7 +132,7 @@ All endpoints require `x-api-key` header.
 ## Directory Structure
 
 ```
-tokenized-cash-pilot/
+sample-tokenized-deposits-settlement/
 ├── besu-private-chain/         # Besu IBFT blueprint (AWS Node Runners CDK)
 ├── tokenized-cash/             # Main application
 │   ├── contracts/              # Solidity: SettlementConsumer, Token (tCAD), KeyRegistry
