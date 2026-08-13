@@ -1,0 +1,16 @@
+node_modules/
+dist/
+out/
+build/
+.env
+*.js.map
+cdk.out/
+cdk.context.json
+.deploy-state.json
+
+# macOS
+.DS_Store
+
+# Foundry / Solidity build artifacts
+**/contracts/out/
+**/contracts/cache/

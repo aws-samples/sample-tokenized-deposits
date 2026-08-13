@@ -1,0 +1,13 @@
+[profile.default]
+src = "."
+out = "out"
+libs = ["lib"]
+solc_version = "0.8.20"
+evm_version = "london"
+
+[profile.default.rpc_endpoints]
+besu = "${BESU_RPC_URL}"
+
+[profile.besu]
+chain_id = 70924
+evm_version = "london"
