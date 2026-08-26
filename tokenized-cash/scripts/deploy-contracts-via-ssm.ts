@@ -197,14 +197,18 @@ async function main() {
   console.log(`  SettlementConsumer:   ${consumerAddr}`);
   console.log(`  Token (tCAD):         ${tokenAddr}`);
 
-  // Build deploy data (KeyRegistry constructor takes admin + initial signer)
+  // Intent bits: MINT_ONLY=0, BURN_AND_MINT=1, BURN_ONLY=2
+  const ROLE_CA = (1 << 0) | (1 << 1); // mint + transfer  = 0b011 = 3
+  const ROLE_MX = 1 << 2;              // redeem/burn only = 0b100 = 4
+
+  // Build deploy data (KeyRegistry constructor takes admin + initial signer + roles)
   const iRegistry = new ethers.Interface(registryArtifact.abi);
   const registryData =
     registryArtifact.bytecode.object +
-    iRegistry.encodeDeploy([wallet.address, caSignerAddress]).slice(2);
+    iRegistry.encodeDeploy([wallet.address, caSignerAddress, ROLE_CA]).slice(2);
 
-  // addSigner(mxSignerAddress) call data
-  const addSignerData = iRegistry.encodeFunctionData("addSigner", [mxSignerAddress]);
+  // addSigner(mxSignerAddress, ROLE_MX) call data
+  const addSignerData = iRegistry.encodeFunctionData("addSigner", [mxSignerAddress, ROLE_MX]);
 
   const iConsumer = new ethers.Interface(consumerArtifact.abi);
   const consumerData =

@@ -145,7 +145,7 @@ contract SettlementConsumer {
 
         bytes32 digest = _hashTypedData(csi);
         address signer = _recoverSigner(digest, signature);
-        require(KEY_REGISTRY.isSigner(signer), "SIGNER_UNAUTHORIZED");
+        require(KEY_REGISTRY.canSign(signer, csi.intent), "SIGNER_INTENT_UNAUTHORIZED");
 
         executed[csi.instructionId] = true;
 
