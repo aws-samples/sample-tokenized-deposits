@@ -15,7 +15,7 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.0",
     "tailwindcss": "^4.1.18",
-    "viem": "^2.45.0"
+    "viem": "^2.55.15"
   },
   "devDependencies": {
     "@types/react": "^19.2.5",
